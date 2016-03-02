@@ -1,4 +1,4 @@
-Image segmentation using DBSCAN clustering algorithm.
+# Image segmentation using DBSCAN clustering algorithm.
 
 This is an adaptation of the general DBSCAN algorithm for image
 segmentation. Even though the demonstration uses 2D embryo

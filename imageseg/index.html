@@ -13,5 +13,12 @@
     <script src="d3.min.js" charset="utf-8"></script>
     <script src="dbscan.js"></script>
     <script src="cluster.js"></script>
+    <script>
+      var d = d3.select("#embryo-image");
+      if (d.node().complete)
+          dbscan.init(300, 394);
+      else
+          d.on("load", function(){dbscan.init(300, 394);});
+    </script>
   </body>
 </html>

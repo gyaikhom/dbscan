@@ -1,32 +1,12 @@
 /* Copyright 2016 Gagarine Yaikhom (MIT License) */
 (function() {
-    if (typeof cluster === 'undefined')
-        cluster = {};
+    if (typeof dbscan === 'undefined')
+        dbscan = {};
 
-    var embryo_image = d3.select("#embryo-image"),
-    embryo_canvas = d3.select("#embryo-canvas"),
-    parameters = d3.select("#parameters"),
-    ctx = embryo_canvas.node().getContext("2d"),
-    dim = {'w': 300, 'h': 394},
-    image_data, number_of_points = 0, points = [],
-    epsilon, epsilon_max = 50, minpts = 8, clusters, num_clusters;
-
-    ctx.drawImage(embryo_image.node(), 0, 0);
-    image_data = ctx.getImageData(0, 0, dim.w, dim.h);
-
-    /* When the mouse moves over the image, select clustering parameters,
-       re-run clustering and render the new clusters */
-    embryo_canvas.on("mousemove", function() {
-        var event = d3.event, e, m;
-        e = convert_to_epsilon(event.offsetX);
-        m = convert_to_minpts(event.offsetY);
-        if (e != epsilon || m != minpts) {
-            epsilon = e;
-            minpts = m;
-            parameters.text('epsilon: ' + e + ', minpts: ' + m);
-            cluster();
-        }
-    });
+    var embryo_image, embryo_canvas, parameters,
+    ctx, dim = {'w': 0, 'h': 0}, image_data,
+    number_of_points = 0, points = [], epsilon, epsilon_max = 50,
+    minpts = 8, clusters, num_clusters;
 
     /* Use width to select epsilon parameter */
     function convert_to_epsilon(x)
@@ -99,8 +79,6 @@
             }
         }
     }
-
-    canvas_to_points();
 
     /* These are the colours we will use to render the clusters */
     cluster_colours = [
@@ -207,4 +185,29 @@
         [115,82,40] /* #735228*/
     ];
 
+    dbscan.init = function(width, height) {
+        dim.w = width;
+        dim.h = height;
+        embryo_image = d3.select("#embryo-image"),
+        embryo_canvas = d3.select("#embryo-canvas"),
+        parameters = d3.select("#parameters"),
+        ctx = embryo_canvas.node().getContext("2d"),
+        ctx.drawImage(embryo_image.node(), 0, 0);
+        image_data = ctx.getImageData(0, 0, dim.w, dim.h);
+
+        /* When the mouse moves over the image, select clustering parameters,
+           re-run clustering and render the new clusters */
+        embryo_canvas.on("mousemove", function() {
+            var event = d3.event, e, m;
+            e = convert_to_epsilon(event.offsetX);
+            m = convert_to_minpts(event.offsetY);
+            if (e != epsilon || m != minpts) {
+                epsilon = e;
+                minpts = m;
+                parameters.text('epsilon: ' + e + ', minpts: ' + m);
+                cluster();
+            }
+        });
+        canvas_to_points();
+    };
 })();

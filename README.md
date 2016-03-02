@@ -13,6 +13,7 @@ This repository contains the following source code and data files:
 * `dbscan.js`- A JavaScript implementation (uses 2D data points).
 * `dbscan.min.js`- A minified JavaScript implementation.
 * `example.dat` - Example data file.
+* `imageseg` - Adaptation of DBSCAN algorithm for image segmentation.
 
 ##Usage
 

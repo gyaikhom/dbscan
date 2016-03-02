@@ -8,6 +8,7 @@ image, there are eight adjacent pixel neighbours; whereas, a 3D voxel
 has 26 adjacent voxel neighbours. The rest of the algorithm need not
 change.
 
+![Example clustering](screenshot.png)
 
 ## Usage
 

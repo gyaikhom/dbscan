@@ -1,9 +1,7 @@
 # The DBSCAN Clustering Algorithm
 
 In this project, we implement the DBSCAN clustering algorithm. For
-further details, please visit my
-[homepage](http://yaikhom.com/2015/09/04/implementing-the-dbscan-clustering-algorithm.html),
-or view the NOWEB generated documentation `dbscan.pdf`.
+further details, please view the NOWEB generated documentation `dbscan.pdf`.
 
 ##Source code
 

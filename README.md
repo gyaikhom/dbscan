@@ -43,9 +43,3 @@ This will produce output as follows:
     3.00  1.00  1.00: 2
     3.00  2.00  1.00: 2
     ...
-
-If you wish to try the algorithm interactively, a JavaScript
-implementation is available
-[here](http://yaikhom.com/2015/09/04/implementing-the-dbscan-clustering-algorithm.html). This
-example uses HTML5 canvas and was implemented using
-[d3js](http://d3js.org) for DOM manipulation and user interaction.
